@@ -1,6 +1,6 @@
 # Javascript/React template for Crafting Sandbox
 
-This is a Javascript/[React](https://reactjs.org/) template, configured for quick development setup in Crafting Sandbox.
+This is a Javascript/[React](https://reactjs.org/) template, configured for quick development setup in [Crafting Sandbox](https://crafting.readme.io/docs).
 
 ## Specifications
 
