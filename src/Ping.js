@@ -3,10 +3,7 @@ import './Ping.css'
 
 function Ping() {
   const [ping, setPing] = useState('')
-  const [pong, setPong] = useState({
-    ping: '',
-    received_at: '',
-  })
+  const [pong, setPong] = useState(null)
 
   const createBaseUrl = () => {
     const locationToMatchRegex = new RegExp('^http://localhost:[0-9]*')
