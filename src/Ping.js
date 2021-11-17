@@ -6,7 +6,7 @@ function Ping() {
   const [pong, setPong] = useState(null)
 
   const createBaseUrl = () => {
-    const locationToMatchRegex = new RegExp('^http://localhost:[0-9]*')
+    const locationToMatchRegex = new RegExp('^http:\/\/localhost(:[0-9]+)?')
     if (locationToMatchRegex.test(window.location.origin)) {
       // The host:port serving backend in a two endpoint setup
       return 'http://localhost:3000'
