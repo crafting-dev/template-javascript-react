@@ -3,10 +3,18 @@ import './Ping.css'
 
 function Ping() {
   const [ping, setPing] = useState('')
-  const [pong, setPong] = useState({
-    ping: '',
-    received_at: '',
-  })
+  const [pong, setPong] = useState(null)
+
+  const createBaseUrl = () => {
+    const locationToMatchRegex = new RegExp('^http:\/\/localhost(:[0-9]+)?')
+    if (locationToMatchRegex.test(window.location.origin)) {
+      // The host:port serving backend in a two endpoint setup
+      return 'http://localhost:3000'
+    }
+    // The current window in a single endpoint setup
+    // /ping path_prefix serves the backend
+    return window.location.origin
+  }
 
   const handleChange = (e) => {
     setPing(e.target.value)
@@ -16,7 +24,8 @@ function Ping() {
     e.preventDefault()
 
     const pingServer = async (ping) => {
-      const response = await fetch(`http://localhost:3000/ping?ping=${ping}`)
+      const baseUrl = createBaseUrl()
+      const response = await fetch(`${baseUrl}/ping?ping=${ping}`)
       const data = await response.json()
       setPong(data)
     }
