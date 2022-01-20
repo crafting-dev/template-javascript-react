@@ -41,25 +41,25 @@ The following [App Definition](https://docs.sandboxes.cloud/docs/app-definition)
 
 ```yaml
 endpoints:
-  - name: web
-    http:
-      routes:
-        - pathPrefix: '/'
-          backend:
-            target: js-react
-            port: web
+- name: web
+  http:
+    routes:
+    - pathPrefix: "/"
+      backend:
+        target: js-react
+        port: web
 workspaces:
-  - name: js-react
-    description: Template frontend using Js/React
-    ports:
-      - name: web
-        port: 3001
-        protocol: HTTP/TCP
-    checkouts:
-      - path: frontend
-        repo:
-          git: https://github.com/crafting-dev/template-javascript-react
-    packages:
-      - name: nodejs
-        version: 16.12.0
+- name: js-react
+  description: Template frontend using Js/React
+  ports:
+  - name: web
+    port: 3001
+    protocol: HTTP/TCP
+  checkouts:
+  - path: frontend
+    repo:
+      git: https://github.com/crafting-dev/template-javascript-react
+  packages:
+  - name: nodejs
+    version: 16.12.0
 ```
