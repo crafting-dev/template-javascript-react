@@ -41,18 +41,20 @@ The following [App Definition](https://docs.sandboxes.cloud/docs/app-definition)
 
 ```yaml
 endpoints:
-- name: web
+- name: app
   http:
     routes:
     - pathPrefix: "/"
       backend:
         target: js-react
-        port: web
+        port: app
+    authProxy:
+      disabled: true
 workspaces:
 - name: js-react
   description: Template frontend using Js/React
   ports:
-  - name: web
+  - name: app
     port: 3001
     protocol: HTTP/TCP
   checkouts:
