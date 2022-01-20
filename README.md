@@ -5,6 +5,7 @@ This is a Javascript/[React](https://reactjs.org/) template, configured for quic
 ## Specifications
 
 This template contains a single [`Ping`](src/Ping.js) component:
+
 ```js
 <React.StrictMode>
   <Ping />
@@ -29,36 +30,36 @@ Once form is submitted, a GET request is made to some backend server that expose
 ```
 
 To run the app, you can do:
+
 ```bash
 PORT=3001 npm start
 ```
 
-## App Configuration
+## App Definition
 
-The following [App Configuration](https://crafting.readme.io/docs/app-spec) was used to create this template:
+The following [App Definition](https://docs.sandboxes.cloud/docs/app-definition) was used to create this template:
 
-```yarn
+```yaml
 endpoints:
-- http:
-  routes:
-  - backend:
-      port: http
-      target: js-react
-    path_prefix: /
-name: app
-services:
-- description: Javascript/React template
-name: js-react
-workspace:
-  checkouts:
-  - path: src/template-javascript-react
-    repo:
-      git: https://github.com/crafting-dev/template-javascript-react.git
-  packages:
-  - name: nodejs
-    version: ~16
-  ports:
-  - name: http
-    port: 3001
-    protocol: HTTP/TCP
+  - name: web
+    http:
+      routes:
+        - pathPrefix: '/'
+          backend:
+            target: js-react
+            port: web
+workspaces:
+  - name: js-react
+    description: Template frontend using Js/React
+    ports:
+      - name: web
+        port: 3001
+        protocol: HTTP/TCP
+    checkouts:
+      - path: frontend
+        repo:
+          git: https://github.com/crafting-dev/template-javascript-react
+    packages:
+      - name: nodejs
+        version: 16.12.0
 ```
